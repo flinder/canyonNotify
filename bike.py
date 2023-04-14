@@ -24,12 +24,13 @@ class Bike:
         soup = BeautifulSoup(req.text, "html.parser")
 
         # Get the list of iteams
-        sizes = soup.find_all(class_="productConfiguration__sizeType")
+        sizes = soup.find_all(class_="productConfiguration__optionListItem")
         logging.info(
             f'{self.name} parse found {len(sizes)} entries')
         for size in sizes:
             # Size and availability condition
-            if size.text.strip() == self.size and size.parent.name.strip() == "button":
+            item_text = size.text.strip()
+            if item_text.startswith(self.size) and 'Delivery' in item_text:
                 logging.info(f'{self.name} is available in size {self.size}')
                 return True
         logging.info(f'{self.name} is NOT available in size {self.size}')
