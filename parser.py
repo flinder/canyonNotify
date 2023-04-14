@@ -1,11 +1,7 @@
 from config import bike_map
-from config import log_level
 from time import sleep
 import logging
 
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=log_level
-)
 
 logger = logging.getLogger(__name__)
 

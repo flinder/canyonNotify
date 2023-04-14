@@ -1,23 +1,16 @@
 #!/usr/bin/env python
 # pylint: disable=C0116
 
-import logging
+import config
 
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 
 # My bike check
 import parser
-# Config with token
-import config
 
-# Enable logging
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=config.log_level
-)
-
+import logging
 logger = logging.getLogger(__name__)
-
 
 # chat_id : seconds
 interval_map = {}
